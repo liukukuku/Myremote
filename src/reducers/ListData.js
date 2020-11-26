@@ -8,8 +8,7 @@ export default (state = initialState, { type, payload }) => {
   switch (type) {
 
     case ListData:
-      console.log(payload,1)
-      return { ...state, ...payload }
+      return { ...state, data: payload.data }
 
     default:
       return state

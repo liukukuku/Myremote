@@ -3,7 +3,8 @@ import React from 'react'
 function index() {
     return (
         <div>
-            home
+            home222
+            <div>222</div>
         </div>
     )
 }

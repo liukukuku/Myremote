@@ -75,7 +75,7 @@ body {
   flex-wrap: wrap;
 }
 .ListBox .ListBox-he {
-  width: 300px;
+  width: 25%;
   height: 120px;
   margin: 10px 30px;
   padding-left: 18px;
@@ -99,8 +99,12 @@ body {
 }
 .ListBox .ant-card-body .ListBox-text {
   flex: 1;
+  height: 100px;
   padding: 15px;
   box-sizing: border-box;
+  color: white;
+  display: flex;
+  align-items: center;
 }
 .ListBox .ListBox-img img {
   width: 60px;

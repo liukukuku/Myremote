@@ -26,7 +26,7 @@ function Index(props) {
                   <img src="./1.png" alt="" />
                 </div>
                 <div className="ListBox-text">
-                  {v.name}<br/>
+                  {v.name}<br/><br/>
                   {v.text}
                 </div>
               </Card>

@@ -5,6 +5,6 @@ import { HomeList } from "@/constant/index"
 export function homefun(payload) {
     return {
         type: HomeList,
-        payload: http.post(api.HOME, payload)
+        payload: http.get(api.HOME)
     }
 }

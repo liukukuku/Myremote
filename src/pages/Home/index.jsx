@@ -1,15 +1,11 @@
 import React from 'react'
 import { Table, Tag, Space, Button } from 'antd'
-import {connect} from "react-redux"
-import {homefun} from "@/actions/Home"
+import { connect } from "react-redux"
+import { homefun } from "@/actions/Home"
 function Index(props) {
     const [selectedRowKeys, setselectedRowKeys] = React.useState([])
     const [selectedRows, setselectedRows] = React.useState([])
-    const [str,setstr]=React.useState(0)
-
-    React.useEffect(()=>{
-        props.homefun({page:1,limit:5})
-    },[])
+    const [str, setstr] = React.useState(0)
 
     const columns = [
         {
@@ -72,14 +68,14 @@ function Index(props) {
         },
     ];
 
-    React.useEffect(()=>{
-        let newselectedRowKeys=selectedRowKeys.filter(v=>{
-            return v!==str
+    React.useEffect(() => {
+        let newselectedRowKeys = selectedRowKeys.filter(v => {
+            return v !== str
         })
         setselectedRowKeys(newselectedRowKeys)
-    },[str])
+    }, [str])
 
-    
+
 
     function log(ids) {
         setstr(ids)
@@ -91,14 +87,14 @@ function Index(props) {
             <div className="tag">
                 Tags:
             {
-                selectedRows.map((v, i) => {
-                    return (
-                        <Tag key={i} closable onClose={()=>{log(v.id)}}>
-                            {v.name}
-                        </Tag>
-                    )
-                })
-            }
+                    selectedRows.map((v, i) => {
+                        return (
+                            <Tag key={i} closable onClose={() => { log(v.id) }}>
+                                {v.name}
+                            </Tag>
+                        )
+                    })
+                }
             </div>
 
             <Table
@@ -117,8 +113,8 @@ function Index(props) {
     )
 }
 
-export default connect(()=>{
+export default connect(() => {
 
-},{
+}, {
     homefun
 })(Index)

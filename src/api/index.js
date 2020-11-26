@@ -3,5 +3,5 @@ export default {
     REGISTERURL : '/home/v1/register',//注册api
     ADDURL : '/home/v5/add',//添加api
     DELETEUSERURL : '/home/v5/deleteUser',//删除api
-    HOME : '/Home/Apis/listWithPage'//列表数据api
+    HOME : '/home/v5/findUser'//列表数据api
 }

@@ -1,7 +1,7 @@
 import qs from 'qs'
 import axios from 'axios'
 let http = axios.create()
-http.defaults.baseURL = 'http://api.baxiaobu.com/index.php'
+http.defaults.baseURL = 'http://api.baxiaobu.com/index.php';
 // 添加请求拦截器
 http.interceptors.request.use(function (config) {
     // 在发送请求之前做些什么

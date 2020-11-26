@@ -1,6 +1,6 @@
 import { HomeList } from "@/constant/index"
 const initialState = {
-
+    data:[]
 }
 
 export default (state = initialState, { type, payload }) => {

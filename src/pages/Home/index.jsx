@@ -113,8 +113,8 @@ function Index(props) {
     )
 }
 
-export default connect(() => {
-
+export default connect((state) => {
+    console.log(state)
 }, {
     homefun
 })(Index)

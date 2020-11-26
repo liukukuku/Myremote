@@ -83,6 +83,8 @@ function Index(props) {
 
     return (
         <div>
+            <div className="tag">
+                Tags:
             {
                 selectedRows.map((v, i) => {
                     return (
@@ -92,6 +94,7 @@ function Index(props) {
                     )
                 })
             }
+            </div>
 
             <Table
                 rowKey="id"

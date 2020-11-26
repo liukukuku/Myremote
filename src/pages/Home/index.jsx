@@ -1,10 +1,15 @@
 import React from 'react'
 import { Table, Tag, Space, Button } from 'antd'
-
+import {connect} from "react-redux"
+import {homefun} from "@/actions/Home"
 function Index(props) {
     const [selectedRowKeys, setselectedRowKeys] = React.useState([])
     const [selectedRows, setselectedRows] = React.useState([])
     const [str,setstr]=React.useState(0)
+
+    React.useEffect(()=>{
+        props.homefun({page:1,limit:5})
+    },[])
 
     const columns = [
         {
@@ -112,4 +117,8 @@ function Index(props) {
     )
 }
 
-export default Index
+export default connect(()=>{
+
+},{
+    homefun
+})(Index)

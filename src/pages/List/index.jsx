@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
-import { getListData } from '@/actions/List'
-export default connect(state => {
-  return {
+import { getData } from '@/actions/List'
 
+export default connect(state => {
+  console.log(state)
+  return {
+    data:state.ListData
   }
 }, {
-getListData
+getData
 })(Index)
-function Index() {
+function Index(props) {
+  useEffect(()=>{
+    props.getData()
+  },[])
   return (
     <div>
 

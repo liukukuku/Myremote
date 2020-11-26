@@ -6,7 +6,6 @@ http.defaults.baseURL = 'http://api.baxiaobu.com/index.php'
 http.interceptors.request.use(function (config) {
     // 在发送请求之前做些什么
     if (config.method==='post' && !(config.data instanceof FormData)) {
-        config.data.token = sessionStorage.getItem('auth')
         config.data = qs.stringify(config.data)
     }
     return config;

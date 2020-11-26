@@ -12,7 +12,7 @@ function index (props){
   const onFinish = (values) => {
     props.SET_LOGIN_USER(values).then(res=>{
         if (res.payload.data.status*1===200) {
-            props.history.push('/Home')
+            props.history.push('/Index')
         }
     })
   };

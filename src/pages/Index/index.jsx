@@ -2,12 +2,13 @@ import React from 'react'
 import { Layout, Menu, Breadcrumb } from 'antd'
 import { UserOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/icons'
 import Home from "@/pages/Home"
+import List from "@/pages/List"
 import {Switch,Route,Redirect,NavLink} from "react-router-dom"
 
 const { SubMenu } = Menu
 const { Header, Content, Sider } = Layout
 
-function Index() {
+function Index(props) {
     return (
         <Layout>
             <Header className="header">
@@ -27,10 +28,12 @@ function Index() {
                         style={{ height: '100%', borderRight: 0 }}
                     >
                         <SubMenu key="sub1" icon={<UserOutlined />} title="subnav 1">
-                            <Menu.Item key="1">option1</Menu.Item>
-                            <Menu.Item key="2">option2</Menu.Item>
-                            <Menu.Item key="3">option3</Menu.Item>
-                            <Menu.Item key="4">option4</Menu.Item>
+                            <Menu.Item key="1">
+                                <NavLink to="/Index/Home">Home</NavLink>
+                            </Menu.Item>
+                            <Menu.Item key="2">
+                                <NavLink to="/Index/List">List</NavLink>
+                            </Menu.Item>
                         </SubMenu>
                         <SubMenu key="sub2" icon={<LaptopOutlined />} title="subnav 2">
                             <Menu.Item key="5">option5</Menu.Item>
@@ -60,12 +63,9 @@ function Index() {
                             minHeight: 280,
                         }}
                     >
-                        <Switch>
-                            <Route path="/Home" component={Home}></Route>
-                            {/* <Route path="/List" component={List}></Route> */}
-                            <Redirect to="/Home"></Redirect>
-                        </Switch>
-
+                        {
+                            props.children
+                        }
                     </Content>
                 </Layout>
             </Layout>

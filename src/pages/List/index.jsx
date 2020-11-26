@@ -11,13 +11,12 @@ export default connect(state => {
   getData
 })(Index)
 function Index(props) {
-  const { data } = props
   useEffect(() => {
     props.getData()
   }, [])
   return (
     <div className="ListBox">
-      {
+      {/* {
         data.data.length !== 0 ?
           data.data.map(v => {
             return (
@@ -32,7 +31,7 @@ function Index(props) {
               </Card>
             )
           }) : ""
-      }
+      } */}
 
     </div>
   )

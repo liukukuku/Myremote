@@ -5,12 +5,12 @@ import { persistStore } from 'redux-persist'
 import { PersistGate } from 'redux-persist/lib/integration/react'
 import Login from '@/pages/Login'
 import Reg from '@/pages/Reg'
-import Home from '@/pages/Home'
-import List from '@/pages/List'
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 import store from '@/store'
+import Index from '@/pages/Index'
+import Home from '@/pages/Home'
+import List from '@/pages/List'
 import '@/styles/index.less'
-
 ReactDOM.render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistStore(store)}>
@@ -21,10 +21,13 @@ ReactDOM.render(
           <Route path="*" render={() => {
             if (sessionStorage.getItem("auth")) {
               return (
-                <Switch>
-                  <Route exact path="/home" component={Home}></Route>
-                  <Route exact path="/list" component={List}></Route>
-                </Switch>
+                <Index>
+                  <Switch>
+                    <Route exact path="/Index/Home" component={Home}></Route>
+                    <Route exact path="/Index/List" component={List}></Route>
+                    <Redirect to="/Index/Home"></Redirect>
+                  </Switch>
+                </Index>
               )
             } else {
               return (

@@ -4,6 +4,7 @@ import '@/styles/index.less'
 import Login from '@/pages/Login'
 import Reg from '@/pages/Reg'
 import Home from '@/pages/Home'
+import List from '@/pages/List'
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 ReactDOM.render(
   <>
@@ -11,19 +12,20 @@ ReactDOM.render(
       <Switch>
       <Route exact path="/Login" component={Login}></Route>
       <Route exact path="/Reg" component={Reg}></Route>
-      <Route path="*" render={()=>{
+      {/* <Route path="*" render={()=>{
         if (sessionStorage.getItem("auth")) {
           return (
-            <Switch>
+            <Switch> */}
               <Route exact path="/home" component={Home}></Route>
-            </Switch>  
+              <Route exact path="/list" component={List}></Route>
+            {/* </Switch>  
           )
         } else {
           return (
             <Redirect to="/Login"></Redirect>  
           )
         }
-      }}></Route>
+      }}></Route> */}
       </Switch>
     </BrowserRouter>
   </>,

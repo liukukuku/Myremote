@@ -1,8 +1,20 @@
 import React from 'react'
 import { Form, Input, Button, Checkbox } from 'antd';
-const Index = () => {
+import { SET_LOGIN_USER } from '@/actions/Loginactions'
+import { connect } from 'react-redux'
+export default connect(
+  () => ({}),
+  {
+    SET_LOGIN_USER
+  }
+)(index)
+function index (props){
   const onFinish = (values) => {
-    console.log('Success:', values);
+    props.SET_LOGIN_USER(values).then(res=>{
+        if (res.payload.data.status*1===200) {
+            props.history.push('/Home')
+        }
+    })
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -37,10 +49,9 @@ const Index = () => {
           >
             <Input />
           </Form.Item>
-            React-native
           <Form.Item
             label="Password"
-            name="password"
+            name="pwd"
             rules={[
               {
                 required: true,
@@ -48,10 +59,10 @@ const Index = () => {
               },
             ]}
           >
-            <Input.Password/>
+            <Input.Password />
           </Form.Item>
 
-          <Form.Item name="remember" valuePropName="checked">
+          <Form.Item valuePropName="checked">
             <Checkbox>Remember me</Checkbox>
           </Form.Item>
 
@@ -65,4 +76,3 @@ const Index = () => {
     </div>
   );
 }
-export default Index

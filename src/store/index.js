@@ -17,6 +17,6 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const store = createStore(
   persistReducer(rootPersistConfig, combineReducers(reducers)),
   composeEnhancers(applyMiddleware(promise))
-  )
-  
+
+)
 export default store

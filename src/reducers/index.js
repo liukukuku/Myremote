@@ -1,5 +1,8 @@
+import ReducersLogin from './ReducersLogin'
+import ReducersReg from './ReducersReg'
 import ListData from './ListData'
-
 export default {
-  ListData,
+    ReducersLogin,
+    ReducersReg,
+    ListData,
 }

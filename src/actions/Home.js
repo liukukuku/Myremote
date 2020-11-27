@@ -1,10 +1,9 @@
 import http from '@/utils/http'
 import api from '@/api'
-import { HomeList } from "@/constant/index"
 
 export function homefun(payload) {
     return {
-        type: HomeList,
+        type: "HOME_LIST",
         payload: http.get(api.HOME)
     }
 }

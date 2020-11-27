@@ -3,9 +3,14 @@ import { Table, Tag, Space, Button } from 'antd'
 import { connect } from "react-redux"
 import { homefun } from "@/actions/Home"
 function Index(props) {
+    const {list}=props
     const [selectedRowKeys, setselectedRowKeys] = React.useState([])
     const [selectedRows, setselectedRows] = React.useState([])
     const [str, setstr] = React.useState(0)
+
+    React.useEffect(()=>{
+        props.homefun()
+    },[])
 
     const columns = [
         {
@@ -50,24 +55,6 @@ function Index(props) {
         },
     ];
 
-    const data = [
-        {
-            id: '1',
-            name: 'John Brown',
-            age: 32,
-        },
-        {
-            id: '2',
-            name: 'Jim Green',
-            age: 42,
-        },
-        {
-            id: '3',
-            name: 'Joe Black',
-            age: 32,
-        },
-    ];
-
     React.useEffect(() => {
         let newselectedRowKeys = selectedRowKeys.filter(v => {
             return v !== str
@@ -79,7 +66,6 @@ function Index(props) {
 
     function log(ids) {
         setstr(ids)
-        console.log(selectedRowKeys)
     }
 
     return (
@@ -108,13 +94,13 @@ function Index(props) {
                     }
                 }}
                 columns={columns}
-                dataSource={data} />
+                dataSource={list} />
         </div>
     )
 }
 
 export default connect((state) => {
-    console.log(state)
+    return {list:state.HomeList.data}
 }, {
     homefun
 })(Index)

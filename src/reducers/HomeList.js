@@ -1,4 +1,3 @@
-import { HomeList } from "@/constant/index"
 const initialState = {
     data:[]
 }
@@ -6,9 +5,9 @@ const initialState = {
 export default (state = initialState, { type, payload }) => {
     switch (type) {
 
-        case HomeList:
-            console.log(payload,1)
-            return { ...state, ...payload }
+        case "HOME_LIST":
+            state.data=payload.data.users
+            return { ... state }
 
         default:
             return state

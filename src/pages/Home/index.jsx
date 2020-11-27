@@ -1,10 +1,33 @@
-import React, { useState, useEffect } from 'react'
-import { Table, Tag, Button } from 'antd'
+import React, { useState } from "react"
+import { Table, Tag, Button } from "antd"
+import { connect } from "react-redux"
+import { homefun } from "@/actions/Home"
+import AddModal from '@@/AddModal'
 
-function Index() {
-    const [selectedRowKeys, setselectedRowKeys] = useState([])
-    const [selectedRows, setselectedRows] = useState([])
-    const [str, setstr] = useState(0)
+function Index(props) {
+
+    const { list } = props
+    const [selectedRowKeys, setselectedRowKeys] = React.useState([])
+    const [selectedRows, setselectedRows] = React.useState([])
+    const [str, setstr] = React.useState(0)
+    const [visible, setVisible] = useState(false)
+
+    function showModal() {
+        setVisible(true)
+    }
+
+    function handleOk() {
+        setVisible(false)
+    }
+
+    function handleCancel() {
+        setVisible(false)
+    }
+
+    React.useEffect(() => {
+        props.homefun()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     const columns = [
         {
@@ -49,30 +72,12 @@ function Index() {
         },
     ];
 
-    const data = [
-        {
-            id: '1',
-            name: 'John Brown',
-            age: 32,
-        },
-        {
-            id: '2',
-            name: 'Jim Green',
-            age: 42,
-        },
-        {
-            id: '3',
-            name: 'Joe Black',
-            age: 32,
-        },
-    ];
-
-    useEffect(() => {
+    React.useEffect(() => {
         let newselectedRowKeys = selectedRowKeys.filter(v => {
             return v !== str
         })
         setselectedRowKeys(newselectedRowKeys)
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [str])
 
 
@@ -83,21 +88,33 @@ function Index() {
 
     return (
         <div>
-            <div className="tag">
-                Tags:
-                {
-                    selectedRows.map((v, i) => {
-                        return (
-                            <Tag key={i} closable onClose={() => { log(v.id) }}>
-                                {v.name}
-                            </Tag>
-                        )
-                    })
-                }
+            <div className="hometop">
+                <div className="tag">
+                    Tags:
+                    {
+                        selectedRows.map((v, i) => {
+                            return (
+                                <Tag key={i} closable onClose={() => { log(v.id) }}>
+                                    {v.name}
+                                </Tag>
+                            )
+                        })
+                    }
+                </div>
+                <Button onClick={showModal}>添加</Button>
+                <AddModal
+                    visible={visible}
+                    handleOk={handleOk}
+                    handleCancel={handleCancel}
+                />
             </div>
+
 
             <Table
                 rowKey="id"
+                pagination={{
+                    pageSize: 5
+                }}
                 rowSelection={{
                     selectedRowKeys,
                     onChange: (selectedRowKeys, selectedRows) => {
@@ -106,9 +123,13 @@ function Index() {
                     }
                 }}
                 columns={columns}
-                dataSource={data} />
+                dataSource={list} />
         </div>
     )
 }
 
-export default Index
+export default connect((state) => {
+    return { list: state.HomeList.data }
+}, {
+    homefun
+})(Index)

@@ -1,9 +1,9 @@
 import http from '@/utils/http'
 import api from '@/api'
-
-export function SET_REG_USER(payload) {
+import {SET_REG_USER} from '@/constant'
+export function SETREGUSER(payload) {
     return {
-        type: 'SET_REG_USER',
+        type: SET_REG_USER,
         payload: http.post(api.REGISTERURL, payload)
     }
 }

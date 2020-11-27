@@ -1,9 +1,9 @@
-import { ListData } from '../constant/index'
-import http from '../utils/http'
-import  api  from '../service/api'
+import { GET_LIST_DATA } from '@/constant/index'
+import http from '@/utils/http'
+import  api  from '@/api'
 export function getData(val) {
   return {
-    type: ListData,
-    payload: http.get(api.getListData)
+    type: GET_LIST_DATA,
+    payload: http.get(api.HOME)
   }
 }

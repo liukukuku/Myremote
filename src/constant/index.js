@@ -1,5 +1,8 @@
-const ListData="ListData"
-
+const GET_LIST_DATA="GET_LIST_DATA"
+const SET_LOGIN_USER="SET_LOGIN_USER"
+const SET_REG_USER="SET_REG_USER"
 export {
-  ListData,
+  GET_LIST_DATA,
+  SET_REG_USER,
+  SET_LOGIN_USER
 }

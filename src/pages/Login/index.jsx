@@ -1,18 +1,18 @@
 import React from 'react'
 import { Form, Input, Button, Checkbox } from 'antd';
-import { SET_LOGIN_USER } from '@/actions/Loginactions'
+import { SETLOGINUSER } from '@/actions/Loginactions'
 import { connect } from 'react-redux'
 export default connect(
   () => ({}),
   {
-    SET_LOGIN_USER
+    SETLOGINUSER
   }
 )(index)
 function index (props){
   const onFinish = (values) => {
-    props.SET_LOGIN_USER(values).then(res=>{
+    props.SETLOGINUSER(values).then(res=>{
         if (res.payload.data.status*1===200) {
-            props.history.push('/Home')
+            props.history.push('/Index')
         }
     })
   };

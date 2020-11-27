@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, } from 'react'
 import { connect } from 'react-redux'
 import { Card } from 'antd';
 import { getData } from '@/actions/List'
@@ -9,14 +9,15 @@ export default connect(
     getData
   })(Index)
 function Index(props) {
+  const {getData,data} = props
   useEffect(() => {
-    props.getData()
+    getData()
   }, [])
   return (
     <div className="ListBox">
       {
-        props.data.data.length !== 0 ?
-          props.data.data.map(v => {
+        data.data.length !== 0 ?
+          data.data.map(v => {
             return (
               <Card key={v.id} className='ListBox-he'>
                 <div className="ListBox-img">

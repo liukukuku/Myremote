@@ -1,17 +1,21 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { Table, Tag, Button } from "antd"
 import { connect } from "react-redux"
 import { homefun } from "@/actions/Home"
 function Index(props) {
-    const { list } = props
+    const { list, homefun, } = props
     const [selectedRowKeys, setselectedRowKeys] = React.useState([])
     const [selectedRows, setselectedRows] = React.useState([])
     const [str, setstr] = React.useState(0)
 
-    React.useEffect(() => {
-        props.homefun()
-    }, [])
+    useEffect(() => {
+        homefun()
+        let newselectedRowKeys = selectedRowKeys.filter(v => {
+            return v !== str
+        })
+        setselectedRowKeys(newselectedRowKeys)
 
+    }, [])
     const columns = [
         {
             title: 'Name',
@@ -55,12 +59,7 @@ function Index(props) {
         },
     ];
 
-    React.useEffect(() => {
-        let newselectedRowKeys = selectedRowKeys.filter(v => {
-            return v !== str
-        })
-        setselectedRowKeys(newselectedRowKeys)
-    }, [str])
+   
 
 
 
@@ -90,14 +89,13 @@ function Index(props) {
             <Table
                 rowKey="id"
                 pagination={{
-                    pageSize:5
+                    pageSize: 5
                 }}
                 rowSelection={{
                     selectedRowKeys: selectedRowKeys,
                     onChange: (selectedRowKeys, selectedRows) => {
                         setselectedRowKeys(selectedRowKeys)
                         setselectedRows(selectedRows)
-                        // console.log(selectedRowKeys, selectedRows)
                     }
                 }}
                 columns={columns}

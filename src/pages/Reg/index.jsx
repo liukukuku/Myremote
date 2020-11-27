@@ -1,16 +1,16 @@
 import React from 'react'
-import { Form, Input, Button, Checkbox } from 'antd';
-import { SET_REG_USER } from '@/actions/Regactions'
+import { Form, Input, Button, } from 'antd';
+import { SETREGUSER } from '@/actions/Regactions'
 import { connect } from 'react-redux'
 export default connect(
     () => ({}),
     {
-        SET_REG_USER
+        SETREGUSER
     }
 )(index)
 function index(props) {
     const onFinish = (values) => {
-        props.SET_REG_USER(values).then(res => {
+        props.SETREGUSER(values).then(res => {
             console.log(res)
             if (res.payload.data.status * 1 === 200) {
                 props.history.push('/Login')

@@ -1,4 +1,4 @@
-import { ListData } from '@/constant'
+import { GET_LIST_DATA } from '@/constant'
 
 const initialState = {
   data: [11]
@@ -7,7 +7,7 @@ const initialState = {
 export default (state = initialState, { type, payload }) => {
   switch (type) {
 
-    case ListData:
+    case GET_LIST_DATA:
       state.data = payload.data.users
       return state
 

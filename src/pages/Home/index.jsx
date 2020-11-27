@@ -1,5 +1,5 @@
-import React from 'react'
-import { Table, Tag, Space, Button } from 'antd'
+import React from "react"
+import { Table, Tag, Button } from "antd"
 import { connect } from "react-redux"
 import { homefun } from "@/actions/Home"
 function Index(props) {

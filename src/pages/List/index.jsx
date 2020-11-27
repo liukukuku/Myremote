@@ -4,10 +4,10 @@ import { Card } from 'antd';
 import { getData } from '@/actions/List'
 
 export default connect(
-  (state)=>({data:state.ListData})
+  (state) => ({ data: state.ListData })
   , {
-  getData
-})(Index)
+    getData
+  })(Index)
 function Index(props) {
   useEffect(() => {
     props.getData()
@@ -23,7 +23,7 @@ function Index(props) {
                   <img src="./1.png" alt="" />
                 </div>
                 <div className="ListBox-text">
-                  {v.name}<br/><br/>
+                  {v.name}<br /><br />
                   {v.msg}
                 </div>
               </Card>

@@ -89,6 +89,9 @@ function Index(props) {
 
             <Table
                 rowKey="id"
+                pagination={{
+                    pageSize:5
+                }}
                 rowSelection={{
                     selectedRowKeys: selectedRowKeys,
                     onChange: (selectedRowKeys, selectedRows) => {

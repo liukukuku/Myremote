@@ -1,0 +1,113 @@
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.txh {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.active {
+  color: #C00;
+}
+.selected {
+  color: #00F;
+}
+.MyAccountLogin {
+  width: 100%;
+  height: 200px;
+  background: #9fc664;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.MyAccountLogin h1 {
+  font-size: 50px;
+  color: white;
+}
+.MyAccountLogin p {
+  color: white;
+}
+.Login {
+  width: 100%;
+  height: 100%;
+  background: #f0f0f0;
+}
+.Login .FormLoginbox {
+  width: 100%;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.Login .FormLoginbox .FormLogin {
+  background: white;
+  width: 550px;
+  height: 320px;
+  box-shadow: 0px 0px 3px 1px gray;
+  padding: 20px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.Login .FormLoginbox .FormLogin .ant-input-affix-wrapper,
+.Login .FormLoginbox .FormLogin .ant-input-password,
+.Login .FormLoginbox .FormLogin .ant-form-item-control-input-content {
+  width: 300px;
+}
+.ListBox {
+  display: flex;
+  flex-wrap: wrap;
+}
+.ListBox .ListBox-he {
+  width: 25%;
+  height: 120px;
+  margin: 10px 30px;
+  padding-left: 18px;
+  box-sizing: border-box;
+}
+.ListBox .ant-card {
+  background-color: #8fc664 !important;
+  display: flex !important;
+}
+.ListBox .ant-card-body {
+  width: 100%;
+  height: 100%;
+  padding: 0px !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: space-around;
+}
+.ListBox .ant-card-body .ListBox-img {
+  width: 60px;
+  height: 60px;
+}
+.ListBox .ant-card-body .ListBox-text {
+  flex: 1;
+  height: 100px;
+  padding: 15px;
+  box-sizing: border-box;
+  color: white;
+  display: flex;
+  align-items: center;
+}
+.ListBox .ListBox-img img {
+  width: 60px;
+  height: auto;
+  display: block;
+}

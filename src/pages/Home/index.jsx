@@ -1,12 +1,11 @@
-import React, { useState } from "react"
+import React, { useEffect } from "react"
 import { Table, Tag, Button } from "antd"
 import { connect } from "react-redux"
 import { homefun } from "@/actions/Home"
 import AddModal from '@@/AddModal'
 
 function Index(props) {
-
-    const { list } = props
+    const { list, homefun, } = props
     const [selectedRowKeys, setselectedRowKeys] = React.useState([])
     const [selectedRows, setselectedRows] = React.useState([])
     const [str, setstr] = React.useState(0)
@@ -24,11 +23,14 @@ function Index(props) {
         setVisible(false)
     }
 
-    React.useEffect(() => {
-        props.homefun()
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    useEffect(() => {
+        homefun()
+        let newselectedRowKeys = selectedRowKeys.filter(v => {
+            return v !== str
+        })
+        setselectedRowKeys(newselectedRowKeys)
 
+    }, [])
     const columns = [
         {
             title: 'Name',
@@ -72,13 +74,7 @@ function Index(props) {
         },
     ];
 
-    React.useEffect(() => {
-        let newselectedRowKeys = selectedRowKeys.filter(v => {
-            return v !== str
-        })
-        setselectedRowKeys(newselectedRowKeys)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [str])
+   
 
 
 

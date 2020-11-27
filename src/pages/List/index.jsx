@@ -20,7 +20,7 @@ function Index(props) {
             return (
               <Card key={v.id} className='ListBox-he'>
                 <div className="ListBox-img">
-                  <img src="./1.png" alt="" />
+                  <img src="/1.png" alt="" />
                 </div>
                 <div className="ListBox-text">
                   {v.name}<br/><br/>

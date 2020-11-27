@@ -4,6 +4,6 @@ import  api  from '@/api'
 export function getData(val) {
   return {
     type: ListData,
-    payload: http.get(api.LISTURL)
+    payload: http.get(api.HOME)
   }
 }

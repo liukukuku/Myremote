@@ -37,7 +37,6 @@ const Index = () => {
           >
             <Input />
           </Form.Item>
-            React-native
           <Form.Item
             label="Password"
             name="password"
@@ -48,7 +47,7 @@ const Index = () => {
               },
             ]}
           >
-            <Input.Password/>
+            <Input.Password />
           </Form.Item>
 
           <Form.Item name="remember" valuePropName="checked">
@@ -58,7 +57,7 @@ const Index = () => {
           <Form.Item >
             <Button type="primary" htmlType="submit">
               Submit
-        </Button>
+            </Button>
           </Form.Item>
         </Form>
       </div>

@@ -1,11 +1,31 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { Button } from 'antd'
+import AddModal from '@@/AddModal'
 
-function index() {
+function Index() {
+
+    const [visible, setVisible] = useState(false)
+
+    function showModal() {
+        setVisible(true)
+    }
+
+    function handleOk() {
+        setVisible(false)
+    }
+
+    function handleCancel() {
+        setVisible(false)
+    }
+
     return (
         <div>
-            home1231231
+            <Button type="primary" onClick={showModal}>
+                Open Modal
+            </Button>
+            <AddModal visible={visible} handleOk={handleOk} handleCancel={handleCancel} />
         </div>
     )
 }
 
-export default index
+export default Index

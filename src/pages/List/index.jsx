@@ -10,28 +10,30 @@ export default connect(
   })
   (Index)
 function Index(props) {
-  const {getData,data} = props
+  
+  const { getData, data } = props
+
   useEffect(() => {
     getData()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
     <div className="ListBox">
       {
-        data.data.length !== 0 ?
-          data.data.map(v => {
-            return (
-              <Card key={v.id} className='ListBox-he'>
-                <div className="ListBox-img">
-                  <img src="/1.png" alt="" />
-                </div>
-                <div className="ListBox-text">
-                  {v.name}<br /><br />
-                  {v.msg}
-                </div>
-              </Card>
-            )
-          }) : ""
+        data.data && data.data.map(v => {
+          return (
+            <Card key={v.id} className='ListBox-he'>
+              <div className="ListBox-img">
+                <img src="/1.png" alt="" />
+              </div>
+              <div className="ListBox-text">
+                {v.name}<br /><br />
+                {v.msg}
+              </div>
+            </Card>
+          )
+        })
       }
 
     </div>

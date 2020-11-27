@@ -1,7 +1,7 @@
 import { GET_LIST_DATA } from '@/constant'
 
 const initialState = {
-  data: [11]
+  data: []
 }
 
 export default (state = initialState, { type, payload }) => {

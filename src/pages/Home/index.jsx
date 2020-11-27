@@ -1,14 +1,15 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { Table, Tag, Button } from "antd"
 import { connect } from "react-redux"
 import { homefun } from "@/actions/Home"
 import AddModal from '@@/AddModal'
 
+
 function Index(props) {
     const { list, homefun, } = props
-    const [selectedRowKeys, setselectedRowKeys] = React.useState([])
-    const [selectedRows, setselectedRows] = React.useState([])
-    const [str, setstr] = React.useState(0)
+    const [selectedRowKeys, setselectedRowKeys] = useState([])
+    const [selectedRows, setselectedRows] = useState([])
+    const [str, setstr] = useState(0)
     const [visible, setVisible] = useState(false)
 
     function showModal() {
@@ -30,6 +31,7 @@ function Index(props) {
         })
         setselectedRowKeys(newselectedRowKeys)
 
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     const columns = [
         {
@@ -74,7 +76,7 @@ function Index(props) {
         },
     ];
 
-   
+
 
 
 

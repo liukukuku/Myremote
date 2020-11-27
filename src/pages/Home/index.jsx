@@ -1,10 +1,16 @@
 import React from 'react'
 import { Table, Tag, Space, Button } from 'antd'
-
+import { connect } from "react-redux"
+import { homefun } from "@/actions/Home"
 function Index(props) {
+    const { list } = props
     const [selectedRowKeys, setselectedRowKeys] = React.useState([])
     const [selectedRows, setselectedRows] = React.useState([])
-    const [str,setstr]=React.useState(0)
+    const [str, setstr] = React.useState(0)
+
+    React.useEffect(() => {
+        props.homefun()
+    }, [])
 
     const columns = [
         {
@@ -49,52 +55,37 @@ function Index(props) {
         },
     ];
 
-    const data = [
-        {
-            id: '1',
-            name: 'John Brown',
-            age: 32,
-        },
-        {
-            id: '2',
-            name: 'Jim Green',
-            age: 42,
-        },
-        {
-            id: '3',
-            name: 'Joe Black',
-            age: 32,
-        },
-    ];
-
-    React.useEffect(()=>{
-        let newselectedRowKeys=selectedRowKeys.filter(v=>{
-            return v!==str
+    React.useEffect(() => {
+        let newselectedRowKeys = selectedRowKeys.filter(v => {
+            return v !== str
         })
         setselectedRowKeys(newselectedRowKeys)
-    },[str])
+    }, [str])
 
-    
+
 
     function log(ids) {
         setstr(ids)
-        console.log(selectedRowKeys)
     }
 
     return (
         <div>
-            <div className="tag">
-                Tags:
-            {
-                selectedRows.map((v, i) => {
-                    return (
-                        <Tag key={i} closable onClose={()=>{log(v.id)}}>
-                            {v.name}
-                        </Tag>
-                    )
-                })
-            }
+            <div className="hometop">
+                <div className="tag">
+                    Tags:
+                    {
+                        selectedRows.map((v, i) => {
+                            return (
+                                <Tag key={i} closable onClose={() => { log(v.id) }}>
+                                    {v.name}
+                                </Tag>
+                            )
+                        })
+                    }
+                </div>
+                <Button>添加</Button>
             </div>
+
 
             <Table
                 rowKey="id"
@@ -107,9 +98,13 @@ function Index(props) {
                     }
                 }}
                 columns={columns}
-                dataSource={data} />
+                dataSource={list} />
         </div>
     )
 }
 
-export default Index
+export default connect((state) => {
+    return { list: state.HomeList.data }
+}, {
+    homefun
+})(Index)

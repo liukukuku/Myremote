@@ -1,15 +1,15 @@
-import { ListData } from '../constant/index'
+import { ListData } from '@/constant'
 
 const initialState = {
-  data: []
+  data: [11]
 }
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
 
     case ListData:
-      console.log(payload)
-      return { ...state, data: payload.data }
+      state.data = payload.data.users
+      return state
 
     default:
       return state

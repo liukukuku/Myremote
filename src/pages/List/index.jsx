@@ -3,11 +3,9 @@ import { connect } from 'react-redux'
 import { Card } from 'antd';
 import { getData } from '@/actions/List'
 
-export default connect(state => {
-  return {
-    data: state.ListData
-  }
-}, {
+export default connect(
+  (state)=>({data:state.ListData})
+  , {
   getData
 })(Index)
 function Index(props) {
@@ -16,9 +14,9 @@ function Index(props) {
   }, [])
   return (
     <div className="ListBox">
-      {/* {
-        data.data.length !== 0 ?
-          data.data.map(v => {
+      {
+        props.data.data.length !== 0 ?
+          props.data.data.map(v => {
             return (
               <Card key={v.id} className='ListBox-he'>
                 <div className="ListBox-img">
@@ -26,12 +24,12 @@ function Index(props) {
                 </div>
                 <div className="ListBox-text">
                   {v.name}<br/><br/>
-                  {v.text}
+                  {v.msg}
                 </div>
               </Card>
             )
           }) : ""
-      } */}
+      }
 
     </div>
   )

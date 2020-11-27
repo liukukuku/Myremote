@@ -70,6 +70,7 @@ function Index(props) {
 
     return (
         <div>
+            <Button>添加</Button>
             <div className="tag">
                 Tags:
             {

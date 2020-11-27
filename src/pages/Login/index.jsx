@@ -25,7 +25,7 @@ function index (props){
     <div className="Login">
       <div className="MyAccountLogin">
         <h1>My  Account  Login</h1>
-        <p>have a nice day</p>
+        <p>不要因为没有掌声而放弃自己的梦想</p>
       </div>
       <div className="FormLoginbox">
         <Form

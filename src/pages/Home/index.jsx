@@ -2,28 +2,13 @@ import React, { useEffect, useState } from "react"
 import { Table, Tag, Button } from "antd"
 import { connect } from "react-redux"
 import { homefun } from "@/actions/Home"
-import AddModal from '@@/AddModal'
-
-
+import FormModel from '@/components/FormModel'
 function Index(props) {
     const { list, homefun, } = props
-    const [selectedRowKeys, setselectedRowKeys] = useState([])
-    const [selectedRows, setselectedRows] = useState([])
-    const [str, setstr] = useState(0)
-    const [visible, setVisible] = useState(false)
-
-    function showModal() {
-        setVisible(true)
-    }
-
-    function handleOk() {
-        setVisible(false)
-    }
-
-    function handleCancel() {
-        setVisible(false)
-    }
-
+    const [selectedRowKeys, setselectedRowKeys] = React.useState([])
+    const [selectedRows, setselectedRows] = React.useState([])
+    const [str, setstr] = React.useState(0)
+    const [visible, setVisible] = React.useState(false);
     useEffect(() => {
         homefun()
         let newselectedRowKeys = selectedRowKeys.filter(v => {
@@ -75,17 +60,29 @@ function Index(props) {
             }
         },
     ];
-
-
-
-
-
     function log(ids) {
+        let arr = selectedRows.filter(v=>{
+            return v.id!==ids
+        })
+        let brr = selectedRowKeys.filter(v=>{
+            return v!==ids
+        })
         setstr(ids)
+        setselectedRows([...arr])
+        setselectedRowKeys([...brr])
     }
 
+    function setVisibleFN(item){
+        setVisible(item)
+    }
+
+    function onCreate(values){
+        console.log('Received values of form: ', values);
+        setVisible(false);
+      };
     return (
         <div>
+            <FormModel visible={visible} setVisibleFN={setVisibleFN} onCreate={onCreate}></FormModel>
             <div className="hometop">
                 <div className="tag">
                     Tags:
@@ -99,12 +96,9 @@ function Index(props) {
                         })
                     }
                 </div>
-                <Button onClick={showModal}>添加</Button>
-                <AddModal
-                    visible={visible}
-                    handleOk={handleOk}
-                    handleCancel={handleCancel}
-                />
+                <Button onClick={()=>{
+                    setVisible(true)
+                }}>添加</Button>
             </div>
 
 

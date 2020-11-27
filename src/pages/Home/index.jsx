@@ -3,14 +3,14 @@ import { Table, Tag, Space, Button } from 'antd'
 import { connect } from "react-redux"
 import { homefun } from "@/actions/Home"
 function Index(props) {
-    const {list}=props
+    const { list } = props
     const [selectedRowKeys, setselectedRowKeys] = React.useState([])
     const [selectedRows, setselectedRows] = React.useState([])
     const [str, setstr] = React.useState(0)
 
-    React.useEffect(()=>{
+    React.useEffect(() => {
         props.homefun()
-    },[])
+    }, [])
 
     const columns = [
         {
@@ -70,19 +70,22 @@ function Index(props) {
 
     return (
         <div>
-            <Button>添加</Button>
-            <div className="tag">
-                Tags:
-            {
-                    selectedRows.map((v, i) => {
-                        return (
-                            <Tag key={i} closable onClose={() => { log(v.id) }}>
-                                {v.name}
-                            </Tag>
-                        )
-                    })
-                }
+            <div className="hometop">
+                <div className="tag">
+                    Tags:
+                    {
+                        selectedRows.map((v, i) => {
+                            return (
+                                <Tag key={i} closable onClose={() => { log(v.id) }}>
+                                    {v.name}
+                                </Tag>
+                            )
+                        })
+                    }
+                </div>
+                <Button>添加</Button>
             </div>
+
 
             <Table
                 rowKey="id"
@@ -101,7 +104,7 @@ function Index(props) {
 }
 
 export default connect((state) => {
-    return {list:state.HomeList.data}
+    return { list: state.HomeList.data }
 }, {
     homefun
 })(Index)

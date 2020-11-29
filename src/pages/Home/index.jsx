@@ -1,13 +1,14 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { Table, Tag, Button } from "antd"
 import { connect } from "react-redux"
 import { homefun } from "@/actions/Home"
+import FormModel from '@/components/FormModel'
 function Index(props) {
     const { list, homefun, } = props
     const [selectedRowKeys, setselectedRowKeys] = React.useState([])
     const [selectedRows, setselectedRows] = React.useState([])
     const [str, setstr] = React.useState(0)
-
+    const [visible, setVisible] = React.useState(false);
     useEffect(() => {
         homefun()
         let newselectedRowKeys = selectedRowKeys.filter(v => {
@@ -15,13 +16,14 @@ function Index(props) {
         })
         setselectedRowKeys(newselectedRowKeys)
 
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     const columns = [
         {
             title: 'Name',
             dataIndex: 'name',
             key: 'name',
-            render: text => <a>{text}</a>,
+            render: text => <span>{text}</span>,
         },
         {
             title: 'Age',
@@ -58,17 +60,29 @@ function Index(props) {
             }
         },
     ];
-
-   
-
-
-
     function log(ids) {
+        let arr = selectedRows.filter(v=>{
+            return v.id!==ids
+        })
+        let brr = selectedRowKeys.filter(v=>{
+            return v!==ids
+        })
         setstr(ids)
+        setselectedRows([...arr])
+        setselectedRowKeys([...brr])
     }
 
+    function setVisibleFN(item){
+        setVisible(item)
+    }
+
+    function onCreate(values){
+        console.log('Received values of form: ', values);
+        setVisible(false);
+      };
     return (
         <div>
+            <FormModel visible={visible} setVisibleFN={setVisibleFN} onCreate={onCreate}></FormModel>
             <div className="hometop">
                 <div className="tag">
                     Tags:
@@ -82,7 +96,9 @@ function Index(props) {
                         })
                     }
                 </div>
-                <Button>添加</Button>
+                <Button onClick={()=>{
+                    setVisible(true)
+                }}>添加</Button>
             </div>
 
 
@@ -92,7 +108,7 @@ function Index(props) {
                     pageSize: 5
                 }}
                 rowSelection={{
-                    selectedRowKeys: selectedRowKeys,
+                    selectedRowKeys,
                     onChange: (selectedRowKeys, selectedRows) => {
                         setselectedRowKeys(selectedRowKeys)
                         setselectedRows(selectedRows)

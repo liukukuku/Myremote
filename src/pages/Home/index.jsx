@@ -5,7 +5,6 @@ import { homefun } from "@/actions/Home"
 import FormModel from '@/components/FormModel'
 function Index(props) {
     const { list, homefun, } = props
-    console.log(list)
     const [selectedRowKeys, setselectedRowKeys] = React.useState([])
     const [selectedRows, setselectedRows] = React.useState([])
     const [str, setstr] = React.useState(0)
